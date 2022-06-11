@@ -1,0 +1,230 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UniversityManager"
+        xmlns:System="clr-namespace:System;assembly=System.Runtime" x:Class="UniversityManager.MainWindow"
+        mc:Ignorable="d"
+        Title="UniversityManager" Height="450" Width="800" ResizeMode="NoResize">
+    <Grid>
+        <Grid Name="AuthMenu" Visibility="Visible">
+            <Label Content="Авторизація" HorizontalAlignment="Center" Margin="0,67,0,0" VerticalAlignment="Top" Height="85" Width="217" FontSize="36" FontStretch="Normal"/>
+            <TextBox Name="Username" HorizontalAlignment="Center" Margin="0,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="216" Height="18"/>
+            <Button Name="AuthButton" TabIndex="2" Content="Авторизуватись" HorizontalAlignment="Center" Margin="0,272,0,0" VerticalAlignment="Top" Height="29" Width="131" Click="AuthButton_Click"/>
+            <Label Content="Username" TabIndex="0" HorizontalAlignment="Left" Margin="211,152,0,0" VerticalAlignment="Top" Width="81" Height="26"/>
+            <Label Content="Password" HorizontalAlignment="Left" Margin="211,201,0,0" VerticalAlignment="Top" Width="81" Height="26"/>
+            <PasswordBox Name="Password" TabIndex="1" HorizontalAlignment="Center" Margin="0,205,0,0" VerticalAlignment="Top" Width="216"/>
+        </Grid>
+        <Grid Name="DeanEmployeeMenu" Visibility="Hidden">
+            <TabControl Margin="0,35,0,0">
+                <TabItem Header="Складати списки груп.">
+                    <Grid Background="#FFE5E5E5">
+                        <TextBox Name="FullName" HorizontalAlignment="Left" Margin="35,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                        <TextBox Name="GroupNumber" HorizontalAlignment="Left" Margin="35,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                        <Label Content="Введіть ПІБ." HorizontalAlignment="Left" Margin="35,28,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Введіть номер групи." HorizontalAlignment="Left" Margin="35,104,0,0" VerticalAlignment="Top"/>
+                        <Button Name="AddStudentInGroup" Content="Додати студента в групу." HorizontalAlignment="Left" Margin="35,186,0,0" VerticalAlignment="Top" Click="AddStudentInGroup_Click"/>
+                        <Label Name="ExitMessage" Content="" HorizontalAlignment="Left" Margin="37,228,0,0" VerticalAlignment="Top"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Складати списки предметів.">
+                    <Grid Background="#FFE5E5E5">
+                        <TextBox Name="SubjectName" HorizontalAlignment="Left" Margin="35,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                        <TextBox Name="GroupNumber1" HorizontalAlignment="Left" Margin="35,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                        <Button Name="AddSubject" Content="Додати предмет для групи" HorizontalAlignment="Left" Margin="35,186,0,0" VerticalAlignment="Top" Click="AddSubject_Click"/>
+                        <Label Content="Введіть назву предмета:" HorizontalAlignment="Left" Margin="28,28,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Введіть номер групи:" HorizontalAlignment="Left" Margin="28,104,0,0" VerticalAlignment="Top"/>
+                        <Label Name="ExitMessageSubject" Content="" HorizontalAlignment="Left" Margin="37,228,0,0" VerticalAlignment="Top"/>
+                        <TextBox Name="Semestrs" HorizontalAlignment="Left" Margin="225,59,0,0" PreviewTextInput="NumbersInTextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                        <TextBox Name="Hours" HorizontalAlignment="Left" Margin="408,59,0,0" PreviewTextInput="NumbersInTextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                        <Label Content="Кількість семестрів:" HorizontalAlignment="Left" Margin="219,28,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Оберіть тип сесії:" HorizontalAlignment="Left" Margin="219,104,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Введіть кількість годин:" HorizontalAlignment="Left" Margin="403,28,0,0" VerticalAlignment="Top"/>
+                        <ComboBox x:Name="ExamType" HorizontalAlignment="Left" Margin="225,131,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0">
+                            <System:String>Залік</System:String>
+                            <System:String>Екзамен</System:String>
+                        </ComboBox>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Реєстрація користувача.">
+                    <Grid Background="#FFE5E5E5">
+                        <TextBox Name="FullNameR" HorizontalAlignment="Left" Margin="28,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                        <TextBox Name="UsernameR" HorizontalAlignment="Left" Margin="28,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                        <TextBox Name="PasswordR" HorizontalAlignment="Left" Margin="28,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                        <TextBox Name="EmailR" HorizontalAlignment="Left" Margin="178,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                        <TextBox Name="PhoneNumberR" PreviewTextInput="NumbersInTextBox" HorizontalAlignment="Left" Margin="178,120,0,0" Text="+380" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" MaxLength="13"/>
+                        <ComboBox Name="UserTypeR" HorizontalAlignment="Left" Margin="178,190,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0">
+                            <System:String>Староста</System:String>
+                            <System:String>Куратор</System:String>
+                            <System:String>Студент</System:String>
+                            <System:String>Працівник деканату</System:String>
+                        </ComboBox>
+                        <Button Name="CreateUser" Content="Створити користувача." HorizontalAlignment="Left" Margin="28,250,0,0" VerticalAlignment="Top" Click="CreateUser_Click"/>
+                        <Label Content="Введіть ПІБ:" HorizontalAlignment="Left" Margin="23,21,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Введіть ім'я користувача:" HorizontalAlignment="Left" Margin="23,91,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Введіть пароль:" HorizontalAlignment="Left" Margin="23,161,0,0" VerticalAlignment="Top"/>
+                        <Label Name="RegExitMessage" Content="" HorizontalAlignment="Left" Margin="23,281,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Введіть пошту:" HorizontalAlignment="Left" Margin="173,21,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Введіть номер телефону:" HorizontalAlignment="Left" Margin="173,91,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Оберіть тип користувача:" HorizontalAlignment="Left" Margin="173,161,0,0" VerticalAlignment="Top"/>
+                    </Grid>
+
+                </TabItem>
+                <TabItem Header="Створити групу.">
+                    <Grid Background="#FFE5E5E5">
+                        <TextBox Name="GroupNumberCreateGroup" HorizontalAlignment="Left" Margin="28,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                        <ComboBox Name="EducationFormCreateGroup" HorizontalAlignment="Left" Margin="28,120,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0">
+                            <System:String>Денна</System:String>
+                            <System:String>Заочна</System:String>
+                            <System:String>Скорочена</System:String>
+                        </ComboBox>
+                        <ComboBox Name="EducationDegreeCreateGroup" HorizontalAlignment="Left" Margin="28,190,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0">
+                            <System:String>Бакалавр</System:String>
+                            <System:String>Магістр</System:String>
+                        </ComboBox>
+                        <ComboBox Name="Specialty" HorizontalAlignment="Left" Margin="230,50,0,0" VerticalAlignment="Top" Width="209" SelectedIndex="0">
+                            <System:String>Комп. інженерія</System:String>
+                            <System:String>Комп. науки</System:String>
+                            <System:String>Інженерія програмного забезпечення</System:String>
+                        </ComboBox>
+                        <Label Content="Введіть номер групи:" HorizontalAlignment="Left" Margin="23,20,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Спеціальність:" HorizontalAlignment="Left" Margin="226,20,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Форма навчання:" HorizontalAlignment="Left" Margin="23,90,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Ступінь освіти:" HorizontalAlignment="Left" Margin="23,160,0,0" VerticalAlignment="Top"/>
+                        <Label Name="CreateGroupExitMessage" Content="" HorizontalAlignment="Left" Margin="23,300,0,0" VerticalAlignment="Top"/>
+                        <Button Name="CreateGroup" Content="Створити групу." HorizontalAlignment="Left" Margin="28,271,0,0" VerticalAlignment="Top" Click="CreateGroup_Click"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Інформація про студента.">
+                    <Grid Background="#FFE5E5E5">
+                        <TextBox Name="InfoStudentBoxDean" HorizontalAlignment="Left" Margin="28,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                        <Label Content="Введіть ПІБ:" HorizontalAlignment="Left" Margin="23,10,0,0" VerticalAlignment="Top"/>
+                        <Label Name="StudentInfoDean" Content="" HorizontalAlignment="Left" Margin="23,80,0,0" VerticalAlignment="Top"/>
+                        <Button Name="GetStudentInfoDean" Content="Отримати інформацію про студента." HorizontalAlignment="Left" Margin="169,39,0,0" VerticalAlignment="Top" Click="GetStudentInfoDean_Click"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Список групи.">
+                    <Grid Background="#FFE5E5E5">
+                        <TextBox Name="GroupNumberDean" HorizontalAlignment="Left" Margin="28,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                        <Label Content="Введіть номер групи:" HorizontalAlignment="Left" Margin="23,23,0,0" VerticalAlignment="Top"/>
+                        <Label Name="GroupListExitEnum" Content="" HorizontalAlignment="Left" Margin="23,150,0,0" VerticalAlignment="Top"/>
+                        <Button Name="ShowGroupList" Content="Відобразити список групи" HorizontalAlignment="Left" Margin="14,94,0,0" VerticalAlignment="Top" Click="ShowGroupList_Click"/>
+                        <DataGrid Name="GroupListDean" Margin="250,0,0,0"/>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+            <Label Name="UserNameD" Content="Працівник деканату." HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top"/>
+            <Button Name="ExitDeanEmployee" Content="Вийти" HorizontalAlignment="Left" Margin="740,10,0,0" VerticalAlignment="Top" Click="ExitButton_Click"/>
+
+
+        </Grid>
+        <Grid Name="StudentMenu" Visibility="Hidden" IsVisibleChanged="StudentMenu_IsVisibleChanged">
+            <Label Name="UserNameS" Content="Студент." HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top"/>
+            <Button Name="ExitStudent" Content="Вийти" HorizontalAlignment="Left" Margin="740,10,0,0" VerticalAlignment="Top" Click="ExitButton_Click"/>
+            <Label Name="StudentInfo" Content="" HorizontalAlignment="Left" Margin="33,63,0,0" VerticalAlignment="Top"/>
+            <DataGrid Name="SubjectList" Margin="300,100,100,50"/>
+
+        </Grid>
+        <Grid Name="MonitorMenu" Visibility="Hidden" IsVisibleChanged="MonitorMenu_IsVisibleChanged">
+            <Label Name="UserNameM" Content="Староста." HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top"/>
+            <Button Name="ExitMonitor" Content="Вийти" HorizontalAlignment="Left" Margin="740,10,0,0" VerticalAlignment="Top" Click="ExitButton_Click"/>
+            <TabControl Margin="0,35,0,0">
+                <TabItem Header="Заповнити пропуски.">
+                    <Grid Background="#FFE5E5E5">
+                        <TextBox Name="FullNameM" HorizontalAlignment="Left" Margin="28,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                        <TextBox Name="SubjectNameM" HorizontalAlignment="Left" Margin="28,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                        <Calendar Name="PassDate" HorizontalAlignment="Left" Margin="250,50,0,0" VerticalAlignment="Top"/>
+                        <Button Name="AddPass" Content="Добавити пропуск." HorizontalAlignment="Left" Margin="28,220,0,0" VerticalAlignment="Top" Click="AddPass_Click"/>
+                        <Label Content="Введіть ПІБ:" HorizontalAlignment="Left" Margin="23,20,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Введіть назву предмету:" HorizontalAlignment="Left" Margin="23,100,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Оберіть дату:" HorizontalAlignment="Left" Margin="244,20,0,0" VerticalAlignment="Top"/>
+                        <Label Name="ExitMessageM" Content="" HorizontalAlignment="Left" Margin="23,271,0,0" VerticalAlignment="Top"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Отримати підсумки відвідувань.">
+                    <Grid Background="#FFE5E5E5">
+                        <Label Name="GroupNumberPas" Content="Група: " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                        <Label Name="SpecialtyPas" Content="Спеціальність: " HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top"/>
+                        <Label Name="Chair" Content="Кафедра: " HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top"/>
+                        <Label Name="EducationDegree" Content="Ступінь: " HorizontalAlignment="Left" Margin="10,88,0,0" VerticalAlignment="Top"/>
+                        <Label Name="EducationForm" Content="Форма навчання: " HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top"/>
+                        <DataGrid Name="SimpleTable" Margin="300, 10, 10, 10"/>
+                        <Label Name="ExitMessageMPas" Content="" HorizontalAlignment="Left" Margin="10,321,0,0" VerticalAlignment="Top"/>
+                        <Button Name="ReadLogOfPassses" Content="Відобразити список пропусків." HorizontalAlignment="Left" Margin="10,291,0,0" VerticalAlignment="Top" Click="ReadLogOfPassses_Click"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Облік спорт., гром. досягнень.">
+                    <Grid Background="#FFE5E5E5">
+                        <TextBox Name="FullNameAchieve" HorizontalAlignment="Left" Margin="28,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                        <ComboBox Name="TypeOfAchieve" HorizontalAlignment="Left" Margin="28,150,0,0" VerticalAlignment="Top" Width="169" SelectedIndex="0">
+                            <System:String>Громадське досягнення</System:String>
+                            <System:String>Наукова робота</System:String>
+                            <System:String>Крутий спортсмен</System:String>
+                        </ComboBox>
+                        <Button Content="Додати досягнення в базу даних." HorizontalAlignment="Left" Margin="28,250,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+                        <Label Content="Введіть ПІБ:" HorizontalAlignment="Left" Margin="23,18,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Оберіть тип досягнення:" HorizontalAlignment="Left" Margin="23,118,0,0" VerticalAlignment="Top"/>
+                        <Label Name="ExitAchieve" Content="" HorizontalAlignment="Left" Margin="23,278,0,0" VerticalAlignment="Top"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Отримати інф. по студенту.">
+                    <Grid Background="#FFE5E5E5">
+                        <TextBox Name="InfoStudentBoxMonitor" HorizontalAlignment="Left" Margin="28,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                        <Label Content="Введіть ПІБ:" HorizontalAlignment="Left" Margin="23,10,0,0" VerticalAlignment="Top"/>
+                        <Label Name="StudentInfoMonitor" Content="" HorizontalAlignment="Left" Margin="23,80,0,0" VerticalAlignment="Top"/>
+                        <Button Name="GetStudentInfoMonitor" Content="Отримати інформацію про студента." HorizontalAlignment="Left" Margin="169,39,0,0" VerticalAlignment="Top" Click="GetStudentInfoMonitor_Click"/>
+                    </Grid>
+
+                </TabItem>
+                <TabItem Header="Список групи.">
+                    <Grid Background="#FFE5E5E5">
+                        <DataGrid Name="GroupListMonitor"/>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+
+        </Grid>
+
+        <Grid Name="CuratorMenu" Visibility="Hidden" IsVisibleChanged="CuratorMenu_IsVisibleChanged">
+            <Label Name="UserNameC" Content="Куратор." HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top"/>
+            <Button Name="ExitCurator" Content="Вийти" HorizontalAlignment="Left" Margin="740,10,0,0" VerticalAlignment="Top" Click="ExitButton_Click"/>
+            <TabControl Margin="0,35,0,0">
+                <TabItem Header="Заповнювати оцінки.">
+                    <Grid Background="#FFE5E5E5">
+                        <TextBox Name="AddMarkFullName" HorizontalAlignment="Left" Margin="28,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                        <TextBox Name="AddMarkSubjectName" HorizontalAlignment="Left" Margin="28,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                        <TextBox Name="AddMarkCount" HorizontalAlignment="Left" Margin="28,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" PreviewTextInput="NumbersInTextBox"/>
+                        <Calendar Name="AddMarkDate" HorizontalAlignment="Left" Margin="250,50,0,0" VerticalAlignment="Top"/>
+                        <ComboBox Name="AddMarkType" HorizontalAlignment="Left" Margin="28,260,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0">
+                            <System:String>Залік</System:String>
+                            <System:String>Екзамен</System:String>
+                        </ComboBox>
+                        <Button Name="AddMark" Content="Додати оцінку" HorizontalAlignment="Left" Margin="250,263,0,0" VerticalAlignment="Top" Click="AddMark_Click"/>
+                        <Label Content="Введіть ПІБ:" HorizontalAlignment="Left" Margin="23,20,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Введіть назву предмета:" HorizontalAlignment="Left" Margin="23,90,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Введіть оцінку:" HorizontalAlignment="Left" Margin="23,160,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Оберіть тип оцінки:" HorizontalAlignment="Left" Margin="23,230,0,0" VerticalAlignment="Top"/>
+                        <Label Name="AddMarkExitMessage" Content="" HorizontalAlignment="Left" Margin="245,290,0,0" VerticalAlignment="Top"/>
+
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Отримати інф. по студенту.">
+                    <Grid Background="#FFE5E5E5">
+                        <TextBox Name="InfoStudentBoxCurator" HorizontalAlignment="Left" Margin="28,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                        <Label Content="Введіть ПІБ:" HorizontalAlignment="Left" Margin="23,10,0,0" VerticalAlignment="Top"/>
+                        <Label Name="StudentInfoCurator" Content="" HorizontalAlignment="Left" Margin="23,80,0,0" VerticalAlignment="Top"/>
+                        <Button Name="GetStudentInfoCurator" Content="Отримати інформацію про студента." HorizontalAlignment="Left" Margin="169,39,0,0" VerticalAlignment="Top" Click="GetStudentInfoCurator_Click"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Список групи.">
+                    <Grid Background="#FFE5E5E5">
+                        <DataGrid Name="GroupListCurator"/>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+
+        </Grid>
+
+    </Grid>
+</Window>
